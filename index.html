@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelCraft - 스마트 이미지 도구 (서버리스)</title>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="WEBP 변환, 이미지 압축, 크롭, 모자이크, GIF 움짤 만들기 등 모든 이미지 작업을 브라우저에서 100% 안전하게 처리하는 무료 서버리스 이미지 도구 사이트입니다.">
+    <meta name="keywords" content="이미지 변환, WEBP 변환, JPG WEBP, 이미지 압축, 이미지 자르기, 모자이크, GIF 만들기, 움짤">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="styles.css?v=1.2">
+    <!-- Lucide Icons -->
+    <script src="js/lucide.min.js"></script>
+    <!-- Gifshot Library -->
+    <script src="js/gifshot.min.js"></script>
+    <!-- AMP Auto Ads -->
+    <script async custom-element="amp-auto-ads"
+            src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+<body>
+    <!-- AMP Auto Ads -->
+    <amp-auto-ads type="adsense"
+            data-ad-client="ca-pub-4316484120133133">
+    </amp-auto-ads>
+
+    <div class="bg-decorations">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="app-layout">
+        <!-- Navigation Sidebar / Header -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i data-lucide="sparkles"></i>
+                </div>
+                <h1 data-i18n="brand-title">PixelCraft</h1>
+                <span class="badge" data-i18n="brand-badge">Local</span>
+            </div>
+
+            <!-- Language selector dropdown widget [NEW] -->
+            <div class="lang-selector-container">
+                <i data-lucide="globe" class="globe-icon"></i>
+                <select id="app-lang-select" class="lang-select">
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh">简体中文</option>
+                    <option value="zt">繁體中文</option>
+                    <option value="es">Español</option>
+                    <option value="pt">Português</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="ru">Русский</option>
+                </select>
+                <i data-lucide="chevron-down" class="chevron-icon"></i>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="convert">
+                    <i data-lucide="refresh-cw"></i>
+                    <span data-i18n="nav-convert">포맷 변환</span>
+                </button>
+                <button class="nav-item" data-tab="compress">
+                    <i data-lucide="shrink"></i>
+                    <span data-i18n="nav-compress">용량 줄이기</span>
+                </button>
+                <button class="nav-item" data-tab="crop">
+                    <i data-lucide="crop"></i>
+                    <span data-i18n="nav-crop">이미지 자르기</span>
+                </button>
+                <button class="nav-item" data-tab="mosaic">
+                    <i data-lucide="grid"></i>
+                    <span data-i18n="nav-mosaic">사진 모자이크</span>
+                </button>
+                <button class="nav-item" data-tab="gif">
+                    <i data-lucide="film"></i>
+                    <span data-i18n="nav-gif">움짤(GIF) 만들기</span>
+                </button>
+            </nav>
+
+            <div class="app-footer-desktop">
+                <p data-i18n="footer-client">100% Client-Side</p>
+                <p class="sub" data-i18n="footer-sub">서버로 이미지가 전송되지 않습니다.</p>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- Convert Tab -->
+            <section id="tab-convert" class="tab-panel active">
+                <div class="panel-header">
+                    <h2 data-i18n="conv-title">포맷 변환 (WEBP / PNG / JPG)</h2>
+                    <p data-i18n="conv-desc">여러 형식의 이미지를 상호 변환할 수 있습니다. (예: WEBP ↔ PNG, JPG ↔ WEBP)</p>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="dropzone" id="convert-dropzone">
+                        <input type="file" id="convert-file-input" multiple accept="image/*" class="file-input">
+                        <div class="dropzone-content">
+                            <i data-lucide="upload-cloud" class="upload-icon"></i>
+                            <p class="primary-text" data-i18n="dropzone-text">이미지 파일을 여기에 드래그하거나 클릭하여 업로드하세요</p>
+                            <p class="secondary-text" data-i18n="dropzone-formats">PNG, JPG, JPEG, WEBP, BMP, GIF 지원</p>
+                        </div>
+                    </div>
+
+                    <div class="convert-workspace hidden" id="convert-workspace">
+                        <div class="control-row">
+                            <div class="input-group">
+                                <label for="convert-target-format" data-i18n="label-target-format">변환할 포맷 선택</label>
+                                <select id="convert-target-format" class="select-control">
+                                    <option value="image/png" data-i18n="opt-format-png">PNG 포맷으로</option>
+                                    <option value="image/webp" data-i18n="opt-format-webp">WEBP 포맷으로</option>
+                                    <option value="image/jpeg" data-i18n="opt-format-jpg">JPG (JPEG) 포맷으로</option>
+                                </select>
+                            </div>
+                            <button id="btn-convert-all" class="btn btn-primary">
+                                <i data-lucide="play"></i>
+                                <span data-i18n="btn-convert-all">모두 변환하기</span>
+                            </button>
+                        </div>
+
+                        <div class="file-list-container">
+                            <h3><span data-i18n="title-file-list">업로드된 파일 목록</span> (<span id="convert-file-count">0</span>)</h3>
+                            <ul class="file-list" id="convert-file-list">
+                                <!-- Dynamic file items will be rendered here -->
+                            </ul>
+                        </div>
+
+                        <div class="action-footer hidden" id="convert-action-footer">
+                            <button id="btn-download-all-convert" class="btn btn-success">
+                                <i data-lucide="download"></i>
+                                <span data-i18n="btn-download-all">변환된 파일 일괄 다운로드</span>
+                            </button>
+                            <button id="btn-clear-convert" class="btn btn-outline">
+                                <i data-lucide="trash-2"></i>
+                                <span data-i18n="btn-clear-list">목록 비우기</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compress Tab -->
+            <section id="tab-compress" class="tab-panel">
+                <div class="panel-header">
+                    <h2 data-i18n="comp-title">이미지 용량 줄이기 (압축)</h2>
+                    <p data-i18n="comp-desc">품질을 조정하고 이미지 크기를 축소하여 용량을 최소화합니다.</p>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="dropzone" id="compress-dropzone">
+                        <input type="file" id="compress-file-input" accept="image/*" class="file-input">
+                        <div class="dropzone-content">
+                            <i data-lucide="shrink" class="upload-icon"></i>
+                            <p class="primary-text" data-i18n="dropzone-text">압축할 이미지를 여기에 드래그하거나 클릭하세요</p>
+                            <p class="secondary-text" data-i18n="comp-drop-formats">PNG, JPG, WEBP 지원</p>
+                        </div>
+                    </div>
+
+                    <div class="compress-workspace hidden" id="compress-workspace">
+                        <div class="grid-2col">
+                            <!-- Left: Options -->
+                            <div class="card glass-card control-card">
+                                <h3 data-i18n="compress-setting-title">압축 설정</h3>
+                                
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <label for="compress-quality" data-i18n="label-quality">압축 품질 (Quality)</label>
+                                        <span class="value-badge" id="quality-val">80%</span>
+                                    </div>
+                                    <input type="range" id="compress-quality" min="10" max="100" value="80" class="range-control">
+                                    <p class="setting-desc" data-i18n="desc-quality">품질이 낮을수록 용량이 크게 줄어들지만, 화질 저하가 생길 수 있습니다.</p>
+                                </div>
+
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <label for="compress-scale" data-i18n="label-scale">크기 조절 (Scale)</label>
+                                        <span class="value-badge" id="scale-val">100%</span>
+                                    </div>
+                                    <input type="range" id="compress-scale" min="10" max="100" value="100" class="range-control">
+                                    <p class="setting-desc" data-i18n="desc-scale">이미지의 가로/세로 해상도를 조절해 용량을 줄입니다.</p>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label for="compress-format" data-i18n="label-save-format">저장 포맷</label>
+                                    <select id="compress-format" class="select-control">
+                                        <option value="image/webp" data-i18n="opt-comp-webp">WEBP (최적의 압축률)</option>
+                                        <option value="image/jpeg" data-i18n="opt-comp-jpg">JPG / JPEG</option>
+                                        <option value="image/png" data-i18n="opt-comp-png">PNG (무손실 압축)</option>
+                                    </select>
+                                </div>
+
+                                <div class="card-actions">
+                                    <button id="btn-compress-run" class="btn btn-primary btn-block">
+                                        <i data-lucide="zap"></i>
+                                        <span data-i18n="btn-compress-run">실시간 압축하기</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Right: Preview and Stats -->
+                            <div class="card glass-card preview-card">
+                                <h3 data-i18n="analysis-title">압축 결과 분석</h3>
+                                
+                                <div class="stats-grid">
+                                    <div class="stat-box">
+                                        <div class="stat-label" data-i18n="stat-orig-size">원본 크기</div>
+                                        <div class="stat-value" id="comp-orig-size">-</div>
+                                    </div>
+                                    <div class="stat-box accent-box">
+                                        <div class="stat-label" data-i18n="stat-comp-size">압축된 크기</div>
+                                        <div class="stat-value" id="comp-new-size">-</div>
+                                    </div>
+                                    <div class="stat-box success-box">
+                                        <div class="stat-label" data-i18n="stat-reduction">용량 감소율</div>
+                                        <div class="stat-value" id="comp-ratio">-</div>
+                                    </div>
+                                </div>
+
+                                <div class="image-comparison-container">
+                                    <div class="comp-preview-box">
+                                        <span class="label" data-i18n="preview-title">결과물 미리보기</span>
+                                        <div class="preview-wrapper">
+                                            <img id="compress-preview-img" src="" alt="Compressed Preview" class="preview-image">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions">
+                                    <a id="btn-download-compressed" href="#" class="btn btn-success btn-block disabled" download="compressed.webp">
+                                        <i data-lucide="download"></i>
+                                        <span data-i18n="btn-download-comp">압축 이미지 다운로드</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Crop Tab -->
+            <section id="tab-crop" class="tab-panel">
+                <div class="panel-header">
+                    <h2 data-i18n="crop-title">이미지 자르기 및 회전</h2>
+                    <p data-i18n="crop-desc">이미지의 일부분을 자르고, 회전하거나 상하좌우로 뒤집을 수 있습니다.</p>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="dropzone" id="crop-dropzone">
+                        <input type="file" id="crop-file-input" accept="image/*" class="file-input">
+                        <div class="dropzone-content">
+                            <i data-lucide="crop" class="upload-icon"></i>
+                            <p class="primary-text" data-i18n="dropzone-text">자를 이미지를 여기에 드래그하거나 클릭하세요</p>
+                            <p class="secondary-text" data-i18n="dropzone-formats">모든 이미지 형식 지원</p>
+                        </div>
+                    </div>
+
+                    <div class="crop-workspace hidden" id="crop-workspace">
+                        <div class="editor-layout">
+                            <!-- Left / Top: Canvas Container -->
+                            <div class="canvas-container" id="crop-canvas-container">
+                                <div class="canvas-wrapper">
+                                    <canvas id="crop-canvas"></canvas>
+                                    <div class="crop-overlay-box" id="crop-overlay">
+                                        <div class="crop-grid-line h-1"></div>
+                                        <div class="crop-grid-line h-2"></div>
+                                        <div class="crop-grid-line v-1"></div>
+                                        <div class="crop-grid-line v-2"></div>
+                                        <div class="handle nw" data-handle="nw"></div>
+                                        <div class="handle ne" data-handle="ne"></div>
+                                        <div class="handle se" data-handle="se"></div>
+                                        <div class="handle sw" data-handle="sw"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right / Bottom: Controls -->
+                            <div class="card glass-card editor-controls">
+                                <h3 data-i18n="crop-setting-title">도구 설정</h3>
+                                
+                                <div class="setting-item">
+                                    <label data-i18n="label-aspect-ratio">비율 선택 (Aspect Ratio)</label>
+                                    <div class="ratio-buttons">
+                                        <button class="btn btn-sm btn-outline active" data-ratio="free" data-i18n="btn-ratio-free">자유</button>
+                                        <button class="btn btn-sm btn-outline" data-ratio="1:1">1:1</button>
+                                        <button class="btn btn-sm btn-outline" data-ratio="4:3">4:3</button>
+                                        <button class="btn btn-sm btn-outline" data-ratio="16:9">16:9</button>
+                                    </div>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label data-i18n="label-rotation">방향 및 대칭</label>
+                                    <div class="action-buttons-group">
+                                        <button id="btn-crop-rot-ccw" class="btn btn-outline" data-i18n-title="btn-rot-ccw">
+                                            <i data-lucide="rotate-ccw"></i>
+                                            <span data-i18n="btn-rot-ccw">왼쪽 회전</span>
+                                        </button>
+                                        <button id="btn-crop-rot-cw" class="btn btn-outline" data-i18n-title="btn-rot-cw">
+                                            <i data-lucide="rotate-cw"></i>
+                                            <span data-i18n="btn-rot-cw">오른쪽 회전</span>
+                                        </button>
+                                        <button id="btn-crop-flip-h" class="btn btn-outline" data-i18n-title="btn-flip-h">
+                                            <i data-lucide="flip-horizontal"></i>
+                                            <span data-i18n="btn-flip-h">좌우 반전</span>
+                                        </button>
+                                        <button id="btn-crop-flip-v" class="btn btn-outline" data-i18n-title="btn-flip-v">
+                                            <i data-lucide="flip-vertical"></i>
+                                            <span data-i18n="btn-flip-v">상하 반전</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="editor-actions">
+                                    <button id="btn-crop-execute" class="btn btn-primary">
+                                        <i data-lucide="crop"></i>
+                                        <span data-i18n="btn-crop-run">이미지 자르기 완료</span>
+                                    </button>
+                                    <button id="btn-crop-reset" class="btn btn-outline">
+                                        <i data-lucide="refresh-ccw"></i>
+                                        <span data-i18n="btn-reset">초기화</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mosaic Tab -->
+            <section id="tab-mosaic" class="tab-panel">
+                <div class="panel-header">
+                    <h2 data-i18n="mos-title">사진 모자이크 (Pixelate)</h2>
+                    <p data-i18n="mos-desc">이미지의 특정 부위를 터치하거나 마우스로 드래그하여 부분 모자이크 처리를 할 수 있습니다.</p>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="dropzone" id="mosaic-dropzone">
+                        <input type="file" id="mosaic-file-input" accept="image/*" class="file-input">
+                        <div class="dropzone-content">
+                            <i data-lucide="grid" class="upload-icon"></i>
+                            <p class="primary-text" data-i18n="dropzone-text">모자이크할 이미지를 여기에 드래그하거나 클릭하세요</p>
+                            <p class="secondary-text" data-i18n="dropzone-formats">모든 이미지 형식 지원</p>
+                        </div>
+                    </div>
+
+                    <div class="mosaic-workspace hidden" id="mosaic-workspace">
+                        <div class="editor-layout">
+                            <!-- Left / Top: Canvas Container -->
+                            <div class="canvas-container" id="mosaic-canvas-container">
+                                <div class="canvas-wrapper">
+                                    <canvas id="mosaic-canvas"></canvas>
+                                    <!-- Dynamic brush outline indicator -->
+                                    <div id="brush-indicator" class="brush-indicator"></div>
+                                </div>
+                            </div>
+
+                            <!-- Right / Bottom: Controls -->
+                            <div class="card glass-card editor-controls">
+                                <h3 data-i18n="mosaic-setting-title">브러시 설정</h3>
+
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <label for="mosaic-size" data-i18n="label-grid-size">모자이크 크기 (Grid Size)</label>
+                                        <span class="value-badge" id="mosaic-size-val">15px</span>
+                                    </div>
+                                    <input type="range" id="mosaic-size" min="5" max="50" value="15" class="range-control">
+                                    <p class="setting-desc" data-i18n="desc-grid-size">모자이크 격자 크기를 조정합니다. 클수록 불투명도가 올라갑니다.</p>
+                                </div>
+
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <label for="mosaic-brush-radius" data-i18n="label-brush-size">브러시 두께 (Brush Size)</label>
+                                        <span class="value-badge" id="mosaic-brush-radius-val">30px</span>
+                                    </div>
+                                    <input type="range" id="mosaic-brush-radius" min="10" max="100" value="30" class="range-control">
+                                    <p class="setting-desc" data-i18n="desc-brush-size">모자이크 효과를 칠할 마우스/터치 브러시의 크기입니다.</p>
+                                </div>
+
+                                <div class="editor-actions">
+                                    <button id="btn-mosaic-save" class="btn btn-success">
+                                        <i data-lucide="download"></i>
+                                        <span data-i18n="btn-save">저장 및 다운로드</span>
+                                    </button>
+                                    <button id="btn-mosaic-reset" class="btn btn-outline" data-i18n-title="btn-reset-mos">
+                                        <i data-lucide="rotate-ccw"></i>
+                                        <span data-i18n="btn-reset-mos">처음으로</span>
+                                    </button>
+                                </div>
+                                <div class="tip-box">
+                                    <i data-lucide="info" class="tip-icon"></i>
+                                    <span data-i18n="mos-tip">사용 팁: 마우스를 누른 채로 이미지 위를 부드럽게 칠하면 모자이크 효과가 적용됩니다. 모바일에서는 손가락으로 드래그할 수 있습니다.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GIF Tab -->
+            <section id="tab-gif" class="tab-panel">
+                <div class="panel-header">
+                    <h2 data-i18n="gif-title">움짤(GIF) 만들기</h2>
+                    <p data-i18n="gif-desc">여러 장의 이미지를 합쳐 부드러운 애니메이션 GIF 파일로 생성합니다.</p>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="dropzone" id="gif-dropzone">
+                        <input type="file" id="gif-file-input" multiple accept="image/*" class="file-input">
+                        <div class="dropzone-content">
+                            <i data-lucide="film" class="upload-icon"></i>
+                            <p class="primary-text" data-i18n="dropzone-text">프레임으로 사용할 여러 이미지들을 드래그하거나 클릭하여 가져오세요</p>
+                            <p class="secondary-text" data-i18n="gif-drop-formats">복수 선택 가능. 여러 장을 업로드하여 애니메이션을 생성합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="gif-workspace hidden" id="gif-workspace">
+                        <div class="grid-2col">
+                            <!-- Left: Frame list -->
+                            <div class="card glass-card gif-frames-card">
+                                <h3><span data-i18n="gif-frame-title">프레임 순서 정렬</span> (<span id="gif-frame-count">0</span>)</h3>
+                                <p class="setting-desc" data-i18n="gif-frame-desc">드래그하여 프레임의 순서를 바꿀 수 있습니다. 불필요한 프레임은 삭제 가능합니다.</p>
+                                
+                                <div class="frames-grid" id="gif-frames-grid">
+                                    <!-- Dynamic frame thumbnails will appear here -->
+                                </div>
+
+                                <div class="gif-frame-actions">
+                                    <button id="btn-gif-add-more" class="btn btn-outline">
+                                        <i data-lucide="plus"></i>
+                                        <span data-i18n="btn-add-frame">프레임 추가</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Right: Options and Generator -->
+                            <div class="card glass-card control-card">
+                                <h3 data-i18n="gif-setting-title">움짤 상세 설정</h3>
+
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <label for="gif-delay" data-i18n="label-gif-delay">프레임 대기 시간 (Delay)</label>
+                                        <span class="value-badge" id="gif-delay-val">0.2s</span>
+                                    </div>
+                                    <input type="range" id="gif-delay" min="5" max="200" value="20" class="range-control">
+                                    <p class="setting-desc" data-i18n="desc-gif-delay">프레임당 재생 속도를 정합니다. 값이 작을수록 빠르게 깜빡입니다.</p>
+                                </div>
+
+                                <div class="grid-2col-mini">
+                                    <div class="setting-item">
+                                        <label for="gif-width" data-i18n="label-gif-width">가로 너비 (Width)</label>
+                                        <select id="gif-width" class="select-control">
+                                            <option value="320" data-i18n="opt-size-sm">320 px (작게)</option>
+                                            <option value="500" selected data-i18n="opt-size-md">500 px (보통)</option>
+                                            <option value="800" data-i18n="opt-size-lg">800 px (크게)</option>
+                                            <option value="custom" data-i18n="opt-size-custom">직접 지정</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="setting-item">
+                                        <label for="gif-height" data-i18n="label-gif-height">세로 높이 (Height)</label>
+                                        <select id="gif-height" class="select-control">
+                                            <option value="320" data-i18n="opt-size-sm">320 px (작게)</option>
+                                            <option value="500" selected data-i18n="opt-size-md">500 px (보통)</option>
+                                            <option value="800" data-i18n="opt-size-lg">800 px (크게)</option>
+                                            <option value="custom" data-i18n="opt-size-custom">직접 지정</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="setting-item hidden" id="gif-custom-size-group">
+                                    <div class="grid-2col-mini">
+                                        <div>
+                                            <label for="gif-custom-width" data-i18n="label-custom-w">너비 입력</label>
+                                            <input type="number" id="gif-custom-width" value="500" class="input-control">
+                                        </div>
+                                        <div>
+                                            <label for="gif-custom-height" data-i18n="label-custom-h">높이 입력</label>
+                                            <input type="number" id="gif-custom-height" value="500" class="input-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions">
+                                    <button id="btn-gif-generate" class="btn btn-primary btn-block">
+                                        <i data-lucide="play-circle"></i>
+                                        <span data-i18n="btn-gif-run">움짤(GIF) 만들기</span>
+                                    </button>
+                                </div>
+
+                                <div class="gif-preview-container hidden" id="gif-preview-container">
+                                    <h4 data-i18n="gif-preview-label">생성된 움짤 미리보기</h4>
+                                    <div class="gif-preview-box">
+                                        <img id="gif-preview-img" src="" alt="GIF Preview">
+                                    </div>
+                                    <div class="gif-download-action">
+                                        <a id="btn-download-gif" href="#" class="btn btn-success btn-block" download="animation.gif">
+                                            <i data-lucide="download"></i>
+                                            <span data-i18n="btn-download-gif">GIF 다운로드</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Progress bar / Spinner -->
+                                <div class="gif-loader hidden" id="gif-loader">
+                                    <div class="spinner"></div>
+                                    <p data-i18n="gif-loader-title">움짤 프레임 인코딩 중... 잠시만 기다려주세요.</p>
+                                    <p class="sub-text" data-i18n="gif-loader-desc">(프레임 수가 많거나 크기가 클수록 완료까지 수 초가 걸릴 수 있습니다)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <button class="mobile-nav-item active" data-tab="convert">
+            <i data-lucide="refresh-cw"></i>
+            <span data-i18n="nav-convert">변환</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="compress">
+            <i data-lucide="shrink"></i>
+            <span data-i18n="nav-compress">압축</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="crop">
+            <i data-lucide="crop"></i>
+            <span data-i18n="nav-crop">자르기</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="mosaic">
+            <i data-lucide="grid"></i>
+            <span data-i18n="nav-mosaic">모자이크</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="gif">
+            <i data-lucide="film"></i>
+            <span data-i18n="nav-gif">움짤</span>
+        </button>
+    </nav>
+
+    <!-- App Dialog / Overlay for cropping/mosaic results -->
+    <div class="dialog-overlay hidden" id="dialog-overlay">
+        <div class="dialog-card glass-card">
+            <div class="dialog-header">
+                <h3 data-i18n="dialog-finish-title">편집 완료</h3>
+                <button class="btn-close" id="btn-dialog-close"><i data-lucide="x"></i></button>
+            </div>
+            <div class="dialog-body">
+                <div class="dialog-preview">
+                    <img id="dialog-preview-img" src="" alt="Result Image">
+                </div>
+                <div class="dialog-stats" id="dialog-stats-text">
+                    <!-- Size details -->
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <a id="btn-dialog-download" href="#" class="btn btn-success" download="edited-image.png">
+                    <i data-lucide="download"></i>
+                    <span data-i18n="btn-download-image">이미지 다운로드</span>
+                </a>
+                <button class="btn btn-outline" id="btn-dialog-cancel" data-i18n="dialog-close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

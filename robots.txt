@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vampelf.github.io/pixelcraft-image-tools/sitemap.xml

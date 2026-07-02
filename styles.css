@@ -1230,18 +1230,13 @@ label {
     width: 100%;
     max-width: 1200px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 0.5rem;
     overflow: hidden;
 }
 
-.adsense-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+.adsense-container ins.adsbygoogle {
+    margin: 0 auto !important;
 }
 
 /* Responsiveness Settings */

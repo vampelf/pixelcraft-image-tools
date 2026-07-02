@@ -1224,6 +1224,26 @@ label {
     background: rgba(0, 0, 0, 0.15);
 }
 
+/* AdSense Container styles */
+.adsense-container {
+    margin: 3.5rem auto 1rem auto;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+
+.adsense-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
 /* Responsiveness Settings */
 @media (max-width: 1024px) {
     .app-layout {

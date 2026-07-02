@@ -130,7 +130,8 @@ export const DICTIONARY = {
         "status-error": "실패",
         "alert-lib-missing": "GIF 라이브러리가 로드되지 않았습니다. 인터넷 상태를 확인하거나 페이지를 새로고침 해보세요.",
         "msg-compress-working": "압축 처리 중...",
-        "msg-dialog-crop": "크롭 완료"
+        "msg-dialog-crop": "크롭 완료",
+        "adsense-label": "광고"
     },
     en: {
         "brand-title": "PixelCraft",
@@ -238,7 +239,8 @@ export const DICTIONARY = {
         "status-error": "Failed",
         "alert-lib-missing": "GIF library not loaded. Check internet connection or reload page.",
         "msg-compress-working": "Compressing...",
-        "msg-dialog-crop": "Cropped successfully"
+        "msg-dialog-crop": "Cropped successfully",
+        "adsense-label": "ADVERTISEMENT"
     },
     ja: {
         "brand-title": "PixelCraft",
@@ -346,7 +348,8 @@ export const DICTIONARY = {
         "status-error": "エラー",
         "alert-lib-missing": "GIFライブラリが読み込まれていません。通信状況を確認するか、リロードしてください。",
         "msg-compress-working": "圧縮中...",
-        "msg-dialog-crop": "切り抜き完了"
+        "msg-dialog-crop": "切り抜き完了",
+        "adsense-label": "広告"
     },
     zh: {
         "brand-title": "PixelCraft",
@@ -454,7 +457,8 @@ export const DICTIONARY = {
         "status-error": "失败",
         "alert-lib-missing": "GIF 库未加载成功，请检查网络或重新刷新页面。",
         "msg-compress-working": "正在压缩...",
-        "msg-dialog-crop": "剪裁完成"
+        "msg-dialog-crop": "剪裁完成",
+        "adsense-label": "广告"
     },
     zt: {
         "brand-title": "PixelCraft",
@@ -562,7 +566,8 @@ export const DICTIONARY = {
         "status-error": "失敗",
         "alert-lib-missing": "GIF 庫未載入成功，請檢查網路或重新整理頁面。",
         "msg-compress-working": "正在壓縮...",
-        "msg-dialog-crop": "剪裁完成"
+        "msg-dialog-crop": "剪裁完成",
+        "adsense-label": "廣告"
     },
     es: {
         "brand-title": "PixelCraft",
@@ -670,7 +675,8 @@ export const DICTIONARY = {
         "status-error": "Falló",
         "alert-lib-missing": "Biblioteca GIF no cargada. Revise conexión o actualice.",
         "msg-compress-working": "Comprimiendo...",
-        "msg-dialog-crop": "Recortado correctamente"
+        "msg-dialog-crop": "Recortado correctamente",
+        "adsense-label": "PUBLICIDAD"
     },
     pt: {
         "brand-title": "PixelCraft",
@@ -778,7 +784,8 @@ export const DICTIONARY = {
         "status-error": "Falhou",
         "alert-lib-missing": "Biblioteca GIF não carregada. Verifique a conexão ou recarregue.",
         "msg-compress-working": "Comprimindo...",
-        "msg-dialog-crop": "Recortado com sucesso"
+        "msg-dialog-crop": "Recortado com sucesso",
+        "adsense-label": "PUBLICIDADE"
     },
     fr: {
         "brand-title": "PixelCraft",
@@ -886,7 +893,8 @@ export const DICTIONARY = {
         "status-error": "Échec",
         "alert-lib-missing": "Bibliothèque GIF non chargée. Vérifiez votre connexion ou rechargez.",
         "msg-compress-working": "Compression...",
-        "msg-dialog-crop": "Recadré avec succès"
+        "msg-dialog-crop": "Recadré avec succès",
+        "adsense-label": "PUBLICITÉ"
     },
     de: {
         "brand-title": "PixelCraft",
@@ -994,7 +1002,8 @@ export const DICTIONARY = {
         "status-error": "Fehlgeschlagen",
         "alert-lib-missing": "GIF-Bibliothek nicht geladen. Prüfen Sie die Verbindung oder laden Sie neu.",
         "msg-compress-working": "Kompression läuft...",
-        "msg-dialog-crop": "Erfolgreich zugeschnitten"
+        "msg-dialog-crop": "Erfolgreich zugeschnitten",
+        "adsense-label": "ANZEIGE"
     },
     ru: {
         "brand-title": "PixelCraft",
@@ -1102,7 +1111,8 @@ export const DICTIONARY = {
         "status-error": "Ошибка",
         "alert-lib-missing": "Библиотека GIF не загружена. Проверьте сеть или обновите страницу.",
         "msg-compress-working": "Сжатие...",
-        "msg-dialog-crop": "Успешно обрезано"
+        "msg-dialog-crop": "Успешно обрезано",
+        "adsense-label": "РЕКЛАМА"
     }
 };
 

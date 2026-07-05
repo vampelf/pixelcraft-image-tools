@@ -1224,20 +1224,7 @@ label {
     background: rgba(0, 0, 0, 0.15);
 }
 
-/* AdSense Container styles */
-.adsense-container {
-    margin: 3.5rem auto 1rem auto;
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    overflow: hidden;
-}
 
-.adsense-container ins.adsbygoogle {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-}
 
 /* Responsiveness Settings */
 @media (max-width: 1024px) {

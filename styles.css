@@ -1229,13 +1229,13 @@ label {
     margin: 3.5rem auto 1rem auto;
     width: 100%;
     max-width: 1200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     overflow: hidden;
 }
 
 .adsense-container ins.adsbygoogle {
+    display: block !important;
+    width: 100% !important;
     margin: 0 auto !important;
 }
 

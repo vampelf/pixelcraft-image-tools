@@ -218,6 +218,7 @@ export class ImageMosaic {
     }
 
     composeOutput() {
+        if (!this.originalImage) return;
         // Draw clean image onto visible canvas
         this.ctx.clearRect(0, 0, this.displayWidth, this.displayHeight);
         this.ctx.drawImage(this.cleanCanvas, 0, 0);

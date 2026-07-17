@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+# AI Search Bots (for search citations)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 Sitemap: https://vampelf.github.io/pixelcraft-image-tools/sitemap.xml

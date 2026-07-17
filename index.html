@@ -9,6 +9,17 @@
     <meta name="keywords" content="이미지 변환, WEBP 변환, JPG WEBP, 이미지 압축, 이미지 자르기, 모자이크, GIF 만들기, 움짤">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://vampelf.github.io/pixelcraft-image-tools/">
+    <link rel="alternate" hreflang="x-default" href="https://vampelf.github.io/pixelcraft-image-tools/">
+    <link rel="alternate" hreflang="ko" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=ko">
+    <link rel="alternate" hreflang="en" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=en">
+    <link rel="alternate" hreflang="ja" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=ja">
+    <link rel="alternate" hreflang="zh" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=zh">
+    <link rel="alternate" hreflang="zt" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=zt">
+    <link rel="alternate" hreflang="es" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=es">
+    <link rel="alternate" hreflang="pt" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=pt">
+    <link rel="alternate" hreflang="fr" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=fr">
+    <link rel="alternate" hreflang="de" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=de">
+    <link rel="alternate" hreflang="ru" href="https://vampelf.github.io/pixelcraft-image-tools/?lang=ru">
     
     <!-- Favicon (Inline Sparkles SVG) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
@@ -51,6 +62,48 @@
         "Image Cropping and Rotation",
         "Selective Pixelation / Mosaic",
         "Animated GIF Creation"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD FAQ Schema for AI Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "PixelCraft는 안전한가요? 이미지가 서버에 전송되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PixelCraft는 100% 서버리스(Serverless) 이미지 도구로, 사용자의 모든 이미지는 서버로 전송되지 않고 사용자의 웹 브라우저 내에서만 안전하게 처리됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is PixelCraft safe? Are my images uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PixelCraft is a 100% serverless image tool. All image processing is done locally within your browser. No files are uploaded to any server, ensuring complete privacy and security."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "어떤 이미지 포맷 변환을 지원하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG, JPG, JPEG, WEBP, BMP, GIF 등의 포맷을 브라우저에서 편리하게 상호 변환할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What image formats are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PixelCraft supports converting, compressing, cropping, and mosaic-blurring PNG, JPG, JPEG, WEBP, BMP, and animated GIF formats."
+          }
+        }
       ]
     }
     </script>
@@ -559,8 +612,68 @@
                         </div>
                     </div>
                 </div>
+            <!-- FAQ Section (Shared under all tabs for SEO / GEO) -->
+            <section class="faq-container card glass-card">
+                <div class="faq-header">
+                    <div class="faq-header-icon">
+                        <i data-lucide="help-circle"></i>
+                    </div>
+                    <h2 data-i18n="faq-title">자주 묻는 질문 (FAQ)</h2>
+                </div>
+                <div class="faq-accordion">
+                    <details class="faq-item" open>
+                        <summary>
+                            <span data-i18n="faq-q1">PixelCraft는 어떤 사이트인가요? 개인정보는 안전한가요?</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p data-i18n="faq-a1">PixelCraft는 이미지 변환, 압축, 자르기, 모자이크 블러, GIF 움짤 제작을 브라우저상에서 직접 수행하는 100% 서버리스 이미지 도구 세트입니다. 사용자의 모든 이미지는 서버로 전송되지 않고 브라우저 내부에서 100% 로컬로만 안전하게 처리되므로, 유출 우려 없이 개인 사진도 안전하게 사용할 수 있습니다.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>
+                            <span data-i18n="faq-q2">어떤 이미지 형식 변환과 기능을 지원하나요?</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p data-i18n="faq-a2">PNG, JPG, JPEG, WEBP, BMP, GIF 등의 포맷 간의 일괄 변환을 지원하며, 이미지의 품질과 해상도를 조절해 용량을 줄이는 압축 기능, 자유롭거나 고정된 비율로 이미지를 자르고 회전하는 기능, 원하는 영역을 문질러 모자이크 처리하는 기능, 그리고 여러 이미지를 합쳐 부드러운 애니메이션 GIF(움짤)를 생성하는 기능을 제공합니다.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>
+                            <span data-i18n="faq-q3">변환할 수 있는 이미지 파일 크기나 개수 제한이 있나요?</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p data-i18n="faq-a3">서버로 업로드하지 않기 때문에 일반적인 온라인 서비스와 달리 파일 업로드 크기나 개수에 대한 서버측 인위적인 제한은 전혀 없습니다. 다만 사용자의 디바이스 메모리(RAM)와 성능 사양에 따라 대용량 이미지 일괄 작업 시 브라우저 속도가 저하될 수 있으므로, 적절한 크기로 나누어 작업하시는 것을 추천합니다.</p>
+                        </div>
+                    </details>
+                </div>
             </section>
+
+            <!-- Hidden Static Multilingual SEO/GEO Helper Blocks for non-JS Crawlers -->
+            <div class="crawlers-seo-helper" style="display: none;" aria-hidden="true">
+                <div lang="en">
+                    <h2>PixelCraft - Safe Serverless Image Tools</h2>
+                    <p>PixelCraft is a free serverless image tool collection. Convert, compress, crop, rotate, mosaic blur, and build animated GIFs locally 100% in your browser. All images are processed offline via HTML5 APIs; they are never uploaded to any server. Supports format conversions between PNG, JPG, JPEG, WEBP, BMP, and GIF, file size compression with quality adjustment, selective pixelation, and timeline-based GIF animation maker.</p>
+                    <h3>Frequently Asked Questions</h3>
+                    <h4>Is PixelCraft safe for private photos?</h4>
+                    <p>Yes. Since PixelCraft runs completely client-side in your web browser, your image data never leaves your computer or device. It is completely offline and secure.</p>
+                    <h4>What features does PixelCraft support?</h4>
+                    <p>We support batch image format converting (PNG, JPG, WEBP, GIF, BMP), file size reduction with live resizing, image cropping & flipping, selective mosaic blur painting, and multi-image animated GIF creation.</p>
+                </div>
+                <div lang="ja">
+                    <h2>PixelCraft - 安全なサーバーレス画像編集ツール</h2>
+                    <p>PixelCraftは、ブラウザ上で100%ローカルに動作する無料の画像編集ツールです。画像形式変換（WEBP、PNG、JPG、BMP、GIF）、容量削減（圧縮）、切り抜き・回転、部分的なモザイクぼかし処理、複数画像からのアニメーションGIF（動画像）作成が完全にオフラインで安全に行えます。画像データはサーバーに一切アップロードされないため、個人情報漏洩の心配がありません。</p>
+                </div>
+                <div lang="zh">
+                    <h2>PixelCraft - 100%本地安全免登录图像处理工具</h2>
+                    <p>PixelCraft 是一款免费的无服务器图像工具箱。所有操作（图片格式转换 WEBP/PNG/JPG、减小图片容量、图片裁剪旋转、局部手绘马赛克打码、多图合成GIF动图）均在您的浏览器中完成，图片绝不会上传到任何服务器，完美保障隐私安全。</p>
+                </div>
+                <div lang="es">
+                    <h2>PixelCraft - Herramientas de Imagen Serverless Seguras</h2>
+                    <p>PixelCraft es un conjunto de herramientas de imagen gratuito que funciona 100% en el lado del cliente (navegador). Convierta formatos (WEBP, PNG, JPG, BMP, GIF), reduzca el tamaño del archivo, recorte, aplique mosaico selectivo y cree GIFs animados localmente sin subir imágenes al servidor.</p>
+                </div>
+            </div>
         </main>
+
     </div>
 
     <!-- Mobile Bottom Navigation -->

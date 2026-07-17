@@ -130,7 +130,16 @@ export const DICTIONARY = {
         "status-error": "실패",
         "alert-lib-missing": "GIF 라이브러리가 로드되지 않았습니다. 인터넷 상태를 확인하거나 페이지를 새로고침 해보세요.",
         "msg-compress-working": "압축 처리 중...",
-        "msg-dialog-crop": "크롭 완료"
+        "msg-dialog-crop": "크롭 완료",
+
+        // FAQ Keys
+        "faq-title": "자주 묻는 질문 (FAQ)",
+        "faq-q1": "PixelCraft는 어떤 사이트인가요? 개인정보는 안전한가요?",
+        "faq-a1": "PixelCraft는 이미지 변환, 압축, 자르기, 모자이크 블러, GIF 움짤 제작을 브라우저상에서 직접 수행하는 100% 서버리스 이미지 도구 세트입니다. 사용자의 모든 이미지는 서버로 전송되지 않고 브라우저 내부에서 100% 로컬로만 안전하게 처리되므로, 유출 우려 없이 개인 사진도 안전하게 사용할 수 있습니다.",
+        "faq-q2": "어떤 이미지 형식 변환과 기능을 지원하나요?",
+        "faq-a2": "PNG, JPG, JPEG, WEBP, BMP, GIF 등의 포맷 간의 일괄 변환을 지원하며, 이미지의 품질과 해상도를 조절해 용량을 줄이는 압축 기능, 자유롭거나 고정된 비율로 이미지를 자르고 회전하는 기능, 원하는 영역을 문질러 모자이크 처리하는 기능, 그리고 여러 이미지를 합쳐 부드러운 애니메이션 GIF(움짤)를 생성하는 기능을 제공합니다.",
+        "faq-q3": "변환할 수 있는 이미지 파일 크기나 개수 제한이 있나요?",
+        "faq-a3": "서버로 업로드하지 않기 때문에 일반적인 온라인 서비스와 달리 파일 업로드 크기나 개수에 대한 서버측 인위적인 제한은 전혀 없습니다. 다만 사용자의 디바이스 메모리(RAM)와 성능 사양에 따라 대용량 이미지 일괄 작업 시 브라우저 속도가 저하될 수 있으므로, 적절한 크기로 나누어 작업하시는 것을 추천합니다."
     },
     en: {
         "brand-title": "PixelCraft",
@@ -238,7 +247,16 @@ export const DICTIONARY = {
         "status-error": "Failed",
         "alert-lib-missing": "GIF library not loaded. Check internet connection or reload page.",
         "msg-compress-working": "Compressing...",
-        "msg-dialog-crop": "Cropped successfully"
+        "msg-dialog-crop": "Cropped successfully",
+
+        // FAQ Keys
+        "faq-title": "Frequently Asked Questions (FAQ)",
+        "faq-q1": "What is PixelCraft? Is my privacy safe?",
+        "faq-a1": "PixelCraft is a 100% serverless image tool collection. All image operations (conversion, compression, cropping, mosaic blur, and GIF creation) are processed directly inside your web browser. No images are uploaded to any server, making it completely secure for private files.",
+        "faq-q2": "Which image formats and features are supported?",
+        "faq-a2": "We support batch conversion between PNG, JPG, JPEG, WEBP, BMP, and GIF. Features include image compression (quality/scale adjustment), cropping & rotating (free/fixed aspect ratios), painting mosaic blur, and generating animated GIFs from multiple images.",
+        "faq-q3": "Is there any limit on image size or file count?",
+        "faq-a3": "Since processing runs locally, there are no server-side limits on file sizes or counts. However, because it relies on your device's memory (RAM) and CPU performance, processing many large images at once might slow down your browser. We recommend splitting huge tasks into smaller batches."
     },
     ja: {
         "brand-title": "PixelCraft",
@@ -346,7 +364,16 @@ export const DICTIONARY = {
         "status-error": "エラー",
         "alert-lib-missing": "GIFライブラリが読み込まれていません。通信状況を確認するか、リロードしてください。",
         "msg-compress-working": "圧縮中...",
-        "msg-dialog-crop": "切り抜き完了"
+        "msg-dialog-crop": "切り抜き完了",
+
+        // FAQ Keys
+        "faq-title": "よくある質問 (FAQ)",
+        "faq-q1": "PixelCraftは安全ですか？画像はサーバーに送信されますか？",
+        "faq-a1": "PixelCraftは100%サーバーレスの画像編集ツールです。すべての処理はブラウザ内でローカルに実行され、画像データがサーバーへアップロードされることはありません。個人情報漏洩의心配なく安全にご利用いただけます。",
+        "faq-q2": "どのような画像形式の変換や機能に対応していますか？",
+        "faq-a2": "PNG, JPG, JPEG, WEBP, BMP, GIFの相互変換に対応しています。機能には、品質と解像度を調整する圧縮、自由/固定比率での切り抜きと回転、ブラシによるモザイクぼかし処理、複数画像からのアニメーションGIF作成があります。",
+        "faq-q3": "画像のファイルサイズやファイル数に制限はありますか？",
+        "faq-a3": "サーバーにアップロードしないため、ファイルサイズや枚数制限はありません。ただし、お使いの端末のメモリ(RAM)やCPU性能に依存するため、非常に大きいファイルや大量の画像を一度に処理するとブラウザが重くなる場合があります。分割しての作業をおすすめします。"
     },
     zh: {
         "brand-title": "PixelCraft",
@@ -454,7 +481,16 @@ export const DICTIONARY = {
         "status-error": "失败",
         "alert-lib-missing": "GIF 库未加载成功，请检查网络或重新刷新页面。",
         "msg-compress-working": "正在压缩...",
-        "msg-dialog-crop": "剪裁完成"
+        "msg-dialog-crop": "剪裁完成",
+
+        // FAQ Keys
+        "faq-title": "常见问题 (FAQ)",
+        "faq-q1": "PixelCraft 安全吗？图片会上传到服务器吗？",
+        "faq-a1": "PixelCraft 是一个 100% 本地运行（无服务器）的图像工具箱。所有格式转换、压缩、裁剪、马赛克和 GIF 制作均在浏览器中完成，图片绝不会上传至任何服务器，保护您的隐私和安全。",
+        "faq-q2": "支持哪些图片格式和功能？",
+        "faq-a2": "支持 PNG、JPG、JPEG、WEBP、BMP 和 GIF 格式的相互批量转换。功能包括图片压缩（调整质量/比例）、图片裁剪与旋转（自由/固定比例）、局部涂抹马赛克打码、以及多图合成 GIF 动图功能。",
+        "faq-q3": "是否有图片大小或数量限制？",
+        "faq-a3": "由于不经过服务器上传，没有硬性的文件大小或数量限制。但是处理取决于您设备的内存 (RAM) 和 CPU 性能，如果一次处理大量大体积图片，浏览器可能会变慢。建议分批处理。"
     },
     zt: {
         "brand-title": "PixelCraft",
@@ -562,7 +598,16 @@ export const DICTIONARY = {
         "status-error": "失敗",
         "alert-lib-missing": "GIF 庫未載入成功，請檢查網路或重新整理頁面。",
         "msg-compress-working": "正在壓縮...",
-        "msg-dialog-crop": "剪裁完成"
+        "msg-dialog-crop": "剪裁完成",
+
+        // FAQ Keys
+        "faq-title": "常見問題 (FAQ)",
+        "faq-q1": "PixelCraft 安全嗎？圖片會上傳到伺服器嗎？",
+        "faq-a1": "PixelCraft 是一個 100% 本地運行（無伺服器）的圖像工具箱。所有格式轉換、壓縮、裁剪、馬賽克和 GIF 製作均在瀏覽器中完成，圖片絕不會上傳至任何伺服器，完美保護您的隱私安全。",
+        "faq-q2": "支援哪些圖片格式和功能？",
+        "faq-a2": "支援 PNG、JPG、JPEG、WEBP、BMP 和 GIF 格式的相互批量轉換。功能包括圖片壓縮（調整品質/比例）、圖片裁剪與旋轉（自由/固定比例）、局部塗抹馬賽克打碼、以及多圖合成 GIF 動圖功能。",
+        "faq-q3": "是否有圖片大小或數量限制？",
+        "faq-a3": "由於不經過伺服器上傳，沒有硬性的檔案大小或數量限制。但是處理取決於您設備的記憶體 (RAM) 和 CPU 性能，如果一次處理大量大體積圖片，瀏覽器可能會變慢。建議分批處理。"
     },
     es: {
         "brand-title": "PixelCraft",
@@ -1113,26 +1158,42 @@ class I18nManager {
     }
 
     init() {
-        // 1. Detect language (Local storage > Browser settings > default 'ko')
-        const stored = localStorage.getItem('pixelcraft_lang');
-        if (stored && DICTIONARY[stored]) {
-            this.currentLang = stored;
+        // 1. Detect language (URL Param > Local storage > Browser settings > default 'ko')
+        let detectedLang = null;
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            if (urlLang && DICTIONARY[urlLang.toLowerCase()]) {
+                detectedLang = urlLang.toLowerCase();
+            }
+        } catch (e) {
+            console.error('Failed to parse URL lang parameter:', e);
+        }
+
+        if (detectedLang) {
+            this.currentLang = detectedLang;
+            localStorage.setItem('pixelcraft_lang', detectedLang);
         } else {
-            const browserLang = navigator.language || navigator.userLanguage || 'ko';
-            const short = browserLang.split('-')[0].toLowerCase();
-            
-            // Map short code to supported dictionaries
-            if (DICTIONARY[short]) {
-                this.currentLang = short;
-            } else if (short === 'zh') {
-                // Determine simplified vs traditional
-                if (browserLang.toLowerCase().includes('tw') || browserLang.toLowerCase().includes('hk') || browserLang.toLowerCase().includes('mo')) {
-                    this.currentLang = 'zt';
-                } else {
-                    this.currentLang = 'zh';
-                }
+            const stored = localStorage.getItem('pixelcraft_lang');
+            if (stored && DICTIONARY[stored]) {
+                this.currentLang = stored;
             } else {
-                this.currentLang = 'en'; // Global fallback
+                const browserLang = navigator.language || navigator.userLanguage || 'ko';
+                const short = browserLang.split('-')[0].toLowerCase();
+                
+                // Map short code to supported dictionaries
+                if (DICTIONARY[short]) {
+                    this.currentLang = short;
+                } else if (short === 'zh') {
+                    // Determine simplified vs traditional
+                    if (browserLang.toLowerCase().includes('tw') || browserLang.toLowerCase().includes('hk') || browserLang.toLowerCase().includes('mo')) {
+                        this.currentLang = 'zt';
+                    } else {
+                        this.currentLang = 'zh';
+                    }
+                } else {
+                    this.currentLang = 'en'; // Global fallback
+                }
             }
         }
     }

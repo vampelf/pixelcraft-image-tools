@@ -1318,6 +1318,153 @@ label {
     }
 }
 
+/* FAQ Accordion Styling */
+.faq-container {
+    margin-top: 4rem;
+    padding: 2.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--bg-card);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-premium);
+    transition: var(--transition-smooth);
+}
+
+.faq-container:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.faq-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-header-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.faq-header-icon i {
+    width: 20px;
+    height: 20px;
+}
+
+.faq-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.3px;
+}
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    background: rgba(255, 255, 255, 0.01);
+    transition: var(--transition-smooth);
+    overflow: hidden;
+}
+
+.faq-item:hover {
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.faq-item[open] {
+    border-color: rgba(139, 92, 246, 0.3);
+    background: rgba(139, 92, 246, 0.02);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.03);
+}
+
+.faq-item summary {
+    padding: 1.15rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    outline: none;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Custom indicator icon using SVG background mask */
+.faq-item summary::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: var(--text-secondary);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease;
+}
+
+.faq-item:hover summary::after {
+    background-color: var(--text-primary);
+}
+
+.faq-item[open] summary::after {
+    background-color: var(--accent-purple);
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    border-top: 1px solid transparent;
+    animation: slideDown 0.3s ease-out;
+}
+
+.faq-item[open] .faq-answer {
+    border-top-color: rgba(255, 255, 255, 0.03);
+    padding-top: 0.75rem;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 580px) {
     .panel-header h2 {
         font-size: 1.5rem;
@@ -1348,5 +1495,21 @@ label {
     
     .dialog-card {
         max-height: 95vh;
+    }
+    
+    /* Mobile FAQ Adaptations */
+    .faq-container {
+        padding: 1.5rem 1.25rem;
+        margin-top: 2.5rem;
+    }
+    
+    .faq-item summary {
+        padding: 1rem 1.15rem;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer {
+        padding: 0 1.15rem 1rem 1.15rem;
+        font-size: 0.82rem;
     }
 }

@@ -11,4 +11,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://vampelf.github.io/pixelcraft-image-tools/sitemap.xml
+Sitemap: https://pixelcraft.m-yan.net/sitemap.xml

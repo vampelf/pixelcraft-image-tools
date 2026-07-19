@@ -40,12 +40,15 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-sans);
     min-height: 100vh;
-    overflow-x: hidden;
     line-height: 1.5;
     position: relative;
 }
@@ -104,7 +107,7 @@ body {
 /* Layout Structure */
 .app-layout {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 280px minmax(0, 1fr);
     min-height: 100vh;
 }
 
@@ -291,6 +294,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
+    min-width: 0;
 }
 
 /* Tab Panels */
@@ -1230,10 +1234,13 @@ label {
     width: 100%;
     max-width: 100%;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
+}
+
+/* Ensure AdSense iframes and ins elements never stretch beyond the parent width */
+.ad-container ins.adsbygoogle,
+.ad-container iframe {
+    max-width: 100% !important;
 }
 
 
@@ -1241,7 +1248,7 @@ label {
 /* Responsiveness Settings */
 @media (max-width: 1024px) {
     .app-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         padding-bottom: 75px; /* space for mobile nav */
     }
     
@@ -1318,11 +1325,11 @@ label {
     }
     
     .grid-2col {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     
     .editor-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     
     .canvas-container {
